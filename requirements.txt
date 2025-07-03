@@ -1,0 +1,6 @@
+flask
+firebase-admin
+pyjwt
+werkzeug
+python-dotenv
+
