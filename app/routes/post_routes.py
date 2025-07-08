@@ -1,17 +1,18 @@
 from flask import Blueprint, jsonify,request
-from app.services.post_service import (create_post)
+from app.services.post_service import (create_post,edit_post)
 
 # from app.services.post_service import (create_post,edit_post,delete_post,restore_post,re_post,getall_post,userspecific_post)
 post_bp=Blueprint('post_bp',__name__)
+print("Post blueprint is being loaded...")  # Top of file
 
-@post_bp.route('/post/createpost',methods=['POST'])
+@post_bp.route('/post/createpost', methods=['POST'])
 def createpost():
     return create_post(request)
 
 
-# @post_bp('/post/editpost',methods=['POST'])
-# def editpost():
-#     return edit_post(request)
+@post_bp.route('/post/editpost/<id>',methods=['POST'])
+def editpost(id):
+    return edit_post(request,id)
 
 
 # @post_bp('/post/deletepost',methods=['POST'])
