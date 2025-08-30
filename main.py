@@ -2,6 +2,7 @@ from flask import Flask,request
 from firebase_admin import credentials, firestore, initialize_app
 import firebase_admin
 
+from flask_cors import CORS
 from app.utils.jwt_handler import authentication
 
 def create_app():
@@ -9,6 +10,8 @@ def create_app():
      
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'your-secret-key'
+
+    CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
 
     # Firebase Init
     if not firebase_admin._apps:
